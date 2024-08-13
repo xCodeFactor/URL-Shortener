@@ -1,0 +1,64 @@
+<!DOCTYPE html>\n" +
+"<html lang=\"en\">\n" +
+"<head>\n" +
+    "    <meta charset=\"UTF-8\">\n" +
+    "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+    "    <title>URL Shortener - Home</title>\n" +
+    "    <!-- Tailwind CSS -->\n" +
+    "    <link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\">\n" +
+    "    <style>\n" +
+                "        body {\n" +
+                "            background: url('/images/background.jpg') no-repeat center fixed;\n" +
+                "            background-size: cover;\n" +
+                "            animation: fadeInBackground 2s ease-in-out forwards;\n" +
+                "        }\n" +
+                "\n" +
+                "        @keyframes fadeInBackground {\n" +
+                "            from {\n" +
+                "                opacity: 0;\n" +
+                "            }\n" +
+                "            to {\n" +
+                "                opacity: 1;\n" +
+                "            }\n" +
+                "        }\n" +
+                "\n" +
+                "        .container {\n" +
+                "            opacity: 0;\n" +
+                "            animation: fadeInContainer 1.5s ease-in-out forwards 0.5s;\n" +
+                "            background-color: transparent; /* Make container fully transparent */\n" +
+                "        }\n" +
+                "\n" +
+                "        @keyframes fadeInContainer {\n" +
+                "            from {\n" +
+                "                opacity: 0;\n" +
+                "                transform: translateY(20px);\n" +
+                "            }\n" +
+                "            to {\n" +
+                "                opacity: 1;\n" +
+                "                transform: translateY(0);\n" +
+                "            }\n" +
+                "        }\n" +
+                "\n" +
+                "        .button {\n" +
+                "            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;\n" +
+                "        }\n" +
+                "\n" +
+                "        .button:hover {\n" +
+                "            background-color: transparent;\n" +
+                "            color: #1D4ED8; /* dark blue */\n" +
+                "            transform: translateY(-5px); /* Pop up effect on hover */\n" +
+                "        }\n" +
+                "    </style>\n" +
+    "</head>\n" +
+"<body class=\"flex items-center justify-center min-h-screen\">\n" +
+"<div class=\"container mx-auto p-6 bg-blue-800 bg-opacity-70 shadow-lg rounded-lg w-full max-w-md\">\n" +
+"    <h1 class=\"text-2xl font-bold mb-6 text-white text-center\">URL Shortener</h1>\n" +
+"    <div class=\"space-y-4\">\n" +
+    "        <a href=\"/api/v1/urls/shorten\" class=\"button block w-full px-4 py-2 bg-white text-blue-500 font-semibold rounded-lg shadow-md text-center\">Shorten URL</a>\n" +
+    "        <a href=\"/api/v1/urls/redirect\" class=\"button block w-full px-4 py-2 bg-white text-blue-500 font-semibold rounded-lg shadow-md text-center\">Access Original Link</a>\n" +
+    "        <a href=\"/api/v1/urls/update\" class=\"button block w-full px-4 py-2 bg-white text-blue-500 font-semibold rounded-lg shadow-md text-center\">Update Shortened URL</a>\n" +
+    "        <a href=\"/api/v1/urls/update-expiry\" class=\"button block w-full px-4 py-2 bg-white text-blue-500 font-semibold rounded-lg shadow-md text-center\">Update URL Expiry</a>\n" +
+    "    </div>\n" +
+"</div>\n" +
+"</body>\n" +
+"</html>\n

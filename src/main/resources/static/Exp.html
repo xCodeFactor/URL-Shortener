@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Redirect</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional custom styles */
+        body {
+            background: url('/images/background.jpg') no-repeat center fixed;
+            background-size: cover;
+        }
+        #redirectResult { display: none; }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+<div class="container mx-auto p-6 bg-blue-500 bg-opacity-70 shadow-lg rounded-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-white text-center">URL Redirect</h1>
+    <form id="redirectForm" class="space-y-4">
+        <div class="flex flex-col">
+            <label for="shortUrl" class="text-sm font-medium text-white">Code</label>
+            <input type="text" id="shortUrl" placeholder="Enter short code" required
+                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+        <button type="submit" class="w-full px-4 py-2 bg-white text-blue-500 font-semibold rounded-lg shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            Go
+        </button>
+    </form>
+    <div id="redirectResult" class="mt-6 p-4 bg-teal-100 border border-teal-300 rounded-md">
+        <p class="text-teal-600">Redirecting to: <a id="redirectUrl" href="#" target="_blank" class="font-semibold underline"></a></p>
+    </div>
+</div>
+
+<script>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Redirect</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional custom styles */
+        body {
+            background: url('/images/background.jpg') no-repeat center fixed;
+            background-size: cover;
+        }
+        #redirectResult { display: none; }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+<div class="container mx-auto p-6 bg-blue-500 bg-opacity-70 shadow-lg rounded-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-white text-center">URL Redirect</h1>
+    <form id="redirectForm" class="space-y-4">
+        <div class="flex flex-col">
+            <label for="shortUrl" class="text-sm font-medium text-white">Code</label>
+            <input type="text" id="shortUrl" placeholder="Enter short code" required
+                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+        <button type="submit" class="w-full px-4 py-2 bg-white text-blue-500 font-semibold rounded-lg shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            Go
+        </button>
+    </form>
+    <div id="redirectResult" class="mt-6 p-4 bg-teal-100 border border-teal-300 rounded-md">
+        <p class="text-teal-600">Redirecting to: <a id="redirectUrl" href="#" target="_blank" class="font-semibold underline"></a></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('redirectForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const shortUrl = document.getElementById('shortUrl').value;
+        const resultContainer = document.getElementById('redirectResult');
+        const redirectUrlElement = document.getElementById('redirectUrl');
+
+        try {
+            const response = await fetch(`/api/v1/urls/${shortUrl}`);
+            if (!response.ok) throw new Error('Failed to redirect');
+            const fullUrl = await response.text();
+            redirectUrlElement.textContent = fullUrl;
+            redirectUrlElement.href = fullUrl;
+            resultContainer.style.display = 'block';
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error retrieving URL. Please try again later.');
+        }
+    });
+</script>
+</body>
+</html>
+
