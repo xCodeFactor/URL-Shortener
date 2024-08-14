@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: shortened_urls
+    ports:
+      - "5432:5432"
+    networks:
+      - springboot-network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: url-shortener-app
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/shortened_urls
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8081:8081"
+    networks:
+      - springboot-network
+
+networks:
+  springboot-network:
+    driver: bridge
