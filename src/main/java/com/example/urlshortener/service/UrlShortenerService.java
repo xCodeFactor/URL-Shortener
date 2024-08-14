@@ -26,7 +26,7 @@ public class UrlShortenerService {
         ShortenedUrl saved = repository.save(shortenedUrl);
         System.out.println("Saved: " + saved);
         repository.save(shortenedUrl);
-        return "http://localhost:8081/" + shortCode;
+        return shortCode;
     }
 
     public String getOriginalUrl(String shortCode) {
