@@ -1,5 +1,5 @@
 # Use Maven 3.9.8 to build the JAR file with OpenJDK 17
-FROM 3.9.8-eclipse-temurin-17-alpine AS build
+FROM maven:3.9.8-eclipse-temurin-17-alpine AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
