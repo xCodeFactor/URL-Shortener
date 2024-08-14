@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://dpg-cqufsmqj1k6c73dvq8qg-a:5432/postgresql_db_hbuf
+      SPRING_DATASOURCE_URL: postgresql://postgresql_db_hbuf_user:Bp23vdeL7toiqUn1F2URhpU0ukqajMou@dpg-cqufsmqj1k6c73dvq8qg-a/postgresql_db_hbuf
       SPRING_DATASOURCE_USERNAME: postgresql_db_hbuf_user
       SPRING_DATASOURCE_PASSWORD: Bp23vdeL7toiqUn1F2URhpU0ukqajMou
     ports:
