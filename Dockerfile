@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
 # Copy the jar file into the container at /app
-COPY target/URL-Shortener-0.0.1-SNAPSHOT.jar app.jar
+COPY docker/URL-Shortener-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the port that the application will run on
 EXPOSE 8081
