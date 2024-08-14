@@ -1,5 +1,5 @@
-# Use Maven to build the JAR file
-FROM maven:3.8.1-openjdk-17 AS build
+# Use Maven 3.9.8 to build the JAR file with OpenJDK 17
+FROM maven:3.9.8-openjdk-17 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
