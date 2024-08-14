@@ -17,7 +17,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: url-shortener-app
     depends_on:
       - postgres
     environment:

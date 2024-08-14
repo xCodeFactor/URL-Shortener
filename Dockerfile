@@ -1,14 +1,13 @@
-# Use a base image with Java 17
-FROM openjdk:17-jdk-alpine
-
-# Set the working directory in the container
+# Use Maven to build the JAR file
+FROM maven:3.8.1-openjdk-17 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copy the jar file into the container at /app
-COPY docker/URL-Shortener-0.0.1-SNAPSHOT.jar app.jar
-
-# Expose the port that the application will run on
+# Use a lightweight OpenJDK image to run the application
+FROM openjdk:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/target/URL-Shortener-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8081
-
-# Command to run the jar file
 ENTRYPOINT ["java", "-jar", "app.jar"]
